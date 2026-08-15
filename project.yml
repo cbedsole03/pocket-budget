@@ -1,0 +1,60 @@
+name: PocketBudget
+options:
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  developmentLanguage: en
+configFiles:
+  Debug: Config/BundleId.xcconfig
+  Release: Config/BundleId.xcconfig
+settings:
+  base:
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+    CODE_SIGN_STYLE: Automatic
+targets:
+  PocketBudget:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: ios/PocketBudget
+        excludes:
+          - "Resources/Info.plist"
+    info:
+      path: ios/PocketBudget/Resources/Info.plist
+      properties:
+        CFBundleName: PocketBudget
+        CFBundleDisplayName: PocketBudget
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        LSApplicationCategoryType: public.app-category.finance
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        CFBundleURLTypes:
+          - CFBundleURLName: pocketbudget
+            CFBundleURLSchemes:
+              - pocketbudget
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID_PREFIX).pocketbudget
+        PRODUCT_NAME: PocketBudget
+        GENERATE_INFOPLIST_FILE: NO
+        TARGETED_DEVICE_FAMILY: "1,2"
+schemes:
+  PocketBudget:
+    build:
+      targets:
+        PocketBudget: all
+    run:
+      config: Debug
+

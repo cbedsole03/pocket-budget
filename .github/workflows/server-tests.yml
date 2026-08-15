@@ -1,0 +1,24 @@
+name: Server tests
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+    paths:
+      - "server/**"
+      - ".github/workflows/server-tests.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Run dependency-free unit tests
+        working-directory: server
+        run: python -m unittest discover -s tests
+

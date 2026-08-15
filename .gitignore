@@ -1,0 +1,16 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+DerivedData/
+build/
+*.xcworkspace
+*.xcodeproj
+Package.resolved
+server/data/
+server/*.sqlite3
+server/*.db
+
