@@ -6,7 +6,7 @@ final class BankLinker: NSObject, ASWebAuthenticationPresentationContextProvidin
     private var session: ASWebAuthenticationSession?
 
     func start(url: URL) async throws {
-        try await withCheckedThrowingContinuation { continuation in
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             let session = ASWebAuthenticationSession(url: url, callbackURLScheme: "pocketbudget") { _, error in
                 if let error {
                     continuation.resume(throwing: error)
@@ -34,4 +34,3 @@ final class BankLinker: NSObject, ASWebAuthenticationPresentationContextProvidin
         return UIWindow()
     }
 }
-
